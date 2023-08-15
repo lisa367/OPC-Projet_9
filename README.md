@@ -35,9 +35,9 @@ Votre répertoire local devrait désormais avoir la structure suivante :
                         | css/
                             | style.css
                 | media/
-                | .gitignore
-                | README.md
-                | requirements.txt
+        | .gitignore
+        | README.md
+        | requirements.txt
 </pre>
 ---
 
