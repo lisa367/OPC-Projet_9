@@ -1,6 +1,5 @@
 .env/
 __pycache__/
-src/media/
 
 manage.py
 db.sqlite3
