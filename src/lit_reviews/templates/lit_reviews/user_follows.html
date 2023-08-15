@@ -1,0 +1,42 @@
+{% extends 'lit_reviews/base.html' %}
+
+{% block content %}
+
+<h2>Suivre d'autres utilisateurs</h2>
+<form action="" method="POST" class="new-subs-form">
+	{% csrf_token %}
+	<!--{{ form.as_p }}-->
+	<input id="new-subscription" type="text" name="new-subscription" placeholder="Nom d'utilisateurs">
+	<input id="send-button" type="submit" value="Envoyer">
+</form>
+
+{% if messages %}
+{% for message in messages %}
+<div class="message error">{{ message }}</div>
+{% endfor %}
+{% endif %}
+
+<h3>Abonnements</h3>
+{% for user in followed_users %}
+<div class="subscriptions">
+	<table>
+		<tr>
+			<td class="td-left">{{ user.username }}</td>
+			<td class="td-right"><a href="{% url 'unfollow' subs_username=user.username %}">Désabonner</a></td>
+		</tr>
+	</table>
+</div>
+{% endfor%}
+
+<h3>Abonnés</h3>
+{% for follower in followers %}
+<div class="followers">
+	<table>
+		<tr>
+			<td>{{ follower }}</td>
+		</tr>
+	</table>
+</div>
+{% endfor%}
+
+{% endblock%}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lit Reviews</title>
+</head>
+
+<body>
+
+    <nav>
+        <h1>LITReview</h1>
+    </nav>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message error">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+
+    <div id="inscription">
+        <h3>Inscrivez-vous</h3>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_table }}
+            <button><a href="{% url 'index' %}">Retourner</a></button>
+            <input type="submit" value="S'inscrire" />
+        </form>
+    </div>
+
+</body>
+
+</html>

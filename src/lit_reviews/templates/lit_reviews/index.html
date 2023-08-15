@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lit Reviews</title>
+</head>
+
+<body>
+
+    <nav>
+        <h1>LITReview</h1>
+    </nav>
+
+    <div id="inscription">
+        <h3>Inscrivez-vous maintenant</h3>
+        <button><a href="{% url 'signup' %}">S'inscrire</a></button>
+    </div>
+
+    <div id="connection">
+        <h3>Connectez-vous</h3>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_table }}
+            <!-- <input type="text" />
+            <input type="password" />-->
+            <input type="submit" value="Se connecter" />
+        </form>
+    </div>
+
+</body>
+
+</html>

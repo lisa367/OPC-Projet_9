@@ -1,0 +1,15 @@
+{% extends 'lit_reviews/base.html' %}
+
+{% block h2 %}
+Supprimer votre ticket
+{% endblock %}
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_table }}
+    <input type="submit" value="Envoyer">
+</form>
+
+{% endblock %}

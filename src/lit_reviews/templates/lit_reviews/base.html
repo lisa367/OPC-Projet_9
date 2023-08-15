@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <title>Lit Reviews</title>
+</head>
+
+<body>
+
+    <nav>
+        <h1 class="nav-left">LITReview</h1>
+        <div class="nav-right">
+            <p><a href="{% url 'homepage' %}">Flux</a></p>
+            <p><a href="{% url 'posts' %}">Posts</a></p>
+            <p><a href="{% url 'subscriptions' %}">Abonnements</a></p>
+            <p><a href="{% url 'logout' %}">Se déconnecter</a></p>
+        </div>
+
+    </nav>
+
+    <h2>{% block h2 %}{% endblock %}</h2>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+
+</html>

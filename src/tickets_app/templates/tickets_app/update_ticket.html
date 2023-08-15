@@ -1,0 +1,15 @@
+{% extends 'lit_reviews/base.html' %}
+
+{% block h2 %}
+Modifier votre ticket
+{% endblock %}
+
+{% block content %}
+
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_table }}
+    <input type="submit" value="Envoyer">
+</form>
+
+{% endblock %}

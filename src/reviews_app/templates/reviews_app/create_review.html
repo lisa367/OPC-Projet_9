@@ -1,0 +1,30 @@
+{% extends 'lit_reviews/base.html' %}
+
+{% block h2 %}
+Créer une critique
+{% endblock %}
+
+{% block content %}
+
+<div>
+    {% if request.user == ticket.user %}
+    <p>Vous êtes en train de poster en réponse à votre propre ticket</p>
+    {% else %}
+    <p>Vous êtes en train de poster en réponse à </p>
+    <div id="ticket-data">
+        <p>{{ ticket.user }} a demandé une critique <span>{{ ticket.time_created|date:"H:i, j F o" }}</span></p>
+        <p>{{ ticket.title }}</p>
+        <p>{{ ticket.description }}</p>
+        <img src="../../media/{{ticket.image}}" alt="{{ ticket.title }}" class="book-img">
+    </div>
+    {% endif %}
+</div>
+
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Envoyer">
+</form>
+
+{% endblock %}
