@@ -16,21 +16,19 @@
     <div class="flux">
         {% for review in reviews %}
         <div class="review">
-            <p>{{ review.headline }}</p>
-            <img src="" alt="star rating" class="rating {{ review.rating }}">
+            <p>{{ review.user }} a posté une critique</p>
             <p>{{ review.time_created|date:'H:i, j F o' }}</p>
-            <p>{{ review.body }}</p>
-            <img src="../media/{{ review.ticket.image }}" alt="{{ review.ticket.title }}" class="book-img">
-            <!-- <a href="{% url 'reviews_app:update-review' review.pk %}">Modifier</a>
-            <a href="{% url 'reviews_app:delete-review' review.pk %}">Supprimer</a> -->
-            <!-- <div class="ticket">
-                {% if review.ticket.user == request.user %}
-                <p>Ticket - Vous</p>
-                {% else %}
-                <p>Ticket - {{ review.ticket.user }}</p>
-                {% endif %}
+            <p>{{ review.headline }} - <img src="../static/icons/star-{{ review.rating }}.png" alt="star rating"
+                    class="rating-stars"></p>
+
+            <div class="original-ticket">
+                <p>ticket - {{ review.ticket.user }}</p>
                 <p>{{ review.ticket.title }}</p>
-            </div>  -->
+                <img src="../media/{{ review.ticket.image }}" alt="{{ review.ticket.title }}" class="book-img">
+                <button>
+                    <a href="{% url 'reviews_app:create-review' ticket_id=review.ticket.pk %}">Créer une critique</a>
+                </button>
+            </div>
         </div>
         {% endfor %}
 
@@ -45,8 +43,6 @@
             <p>{{ ticket.description }}</p>
             <p>{{ ticket.time_created|date:"H:i, j F o" }}</p>
             <img src="../media/{{ticket.image}}" alt="{{ ticket.title|truncatewords:3}}" class="book-img">
-            <!-- <a href="{% url 'tickets_app:update-ticket' pk=ticket.pk %}">Modifier</a>
-            <a href="{% url 'tickets_app:delete-ticket' pk=ticket.pk %}">Supprimer</a> -->
             <button>
                 <a href="{% url 'reviews_app:create-review' ticket_id=ticket.pk %}">Créer une critique</a>
             </button>
@@ -56,11 +52,6 @@
 
         <div class="followers"></div>
 
-        <!-- 
-        <div class="tickets">{% lorem 2 p %}</div>
-        <div class="reviews">{% lorem 2 p %}</div>
-        <div class="followers">{% lorem 2 p %}</div>
-        -->
     </div>
 
 </div>

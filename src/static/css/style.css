@@ -58,11 +58,12 @@ a:visited {
     border: 0px solid white;
 }
 
-.ticket {
+.ticket,
+.original-ticket {
     border: 2px solid black;
     min-width: 20rem;
     min-height: 15rem;
-    max-width: 30rem;
+    max-width: 35rem;
     max-height: 25rem;
     margin-bottom: 0.7rem;
 }
@@ -71,8 +72,8 @@ a:visited {
     border: 2px solid black;
     min-width: 20rem;
     min-height: 15rem;
-    max-width: 30rem;
-    max-height: 25rem;
+    max-width: 35rem;
+    max-height: 40rem;
     margin-bottom: 0.7rem;
 }
 
@@ -81,12 +82,30 @@ a:visited {
     height: 8rem;
 }
 
+
+.rating-stars {
+    /* border: 1px solid red; */
+    width: 4rem;
+    height: 0.9rem;
+}
+
 .page-content {
+    /* border: 1px solid red; */
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
+
+/*            posts.html              */
+
+.posts, .tickets {
+    /*border: 1px solid blue;*/
+    width: 39%;
+}
+
 
 /*            user_follows.html              */
 

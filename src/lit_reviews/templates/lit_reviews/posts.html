@@ -11,39 +11,48 @@ Vos Posts
 {% endif %}
 {% endfor %}
 
-<div class="posts">
-    {% for review in reviews %}
-    <p>Vous avez publié une critique <span>{{ review.time_created|date:'H:i, j F o' }}</span></p>
-    <p>{{ review.headline }}</p>
-    <img src="" alt="star rating" class="rating {{ review.rating }}">
-    <div class="ticket">
-        {% if review.ticket.user == request.user %}
-        <p>Critique - Vous</p>
-        {% else %}
-        <p>Ticket - {{ review.ticket.user }}</p>
-        {% endif %}
-        <p>{{ review.ticket.title }}</p>
-        <img src="../media/{{ review.ticket.image }}" alt="" class="book-img">
+<div class="page-content">
+
+
+    <div class="posts">
+        {% for review in reviews %}
+        <div class="review">
+            <p>Vous avez publié une critique <span>{{ review.time_created|date:'H:i, j F o' }}</span></p>
+            <p>{{ review.headline }}</p>
+            <p>{{ review.body }} - <img src="../static/icons/star-{{ review.rating }}.png" alt="star rating"
+                    class="rating-stars"></p>
+            <div class="original-ticket">
+                {% if review.ticket.user == request.user %}
+                <p>Critique - Vous</p>
+                {% else %}
+                <p>Ticket - {{ review.ticket.user }}</p>
+                {% endif %}
+                <p>{{ review.ticket.title }}</p>
+                <img src="../media/{{ review.ticket.image }}" alt="Image: {{ review.ticket.title|truncatewords:3}}"
+                    class="book-img">
+            </div>
+            <a href="{% url 'reviews_app:update-review' review.pk %}">Modifier</a>
+            <a href="{% url 'reviews_app:delete-review' review.pk %}">Supprimer</a>
+        </div>
+        {% endfor %}
     </div>
-    <a href="{% url 'reviews_app:update-review' review.pk %}">Modifier</a>
-    <a href="{% url 'reviews_app:delete-review' review.pk %}">Supprimer</a>
-    {% endfor %}
+
+    <div class="tickets">
+        {% for ticket in tickets %}
+        <div class="ticket">
+            <p>Vous avez publié un ticket <span>{{ ticket.time_created|date:'H:i, j F o' }}</span></p>
+            <p>Ticket - {{ ticket.user }}</p>
+            <p>{{ ticket.title }}</p>
+            <p>{{ ticket.description }}</p>
+            <img src="../media/{{ ticket.image }}" alt="Image: {{ ticket.title|truncatewords:3 }}" class="book-img">
+            <a href="{% url 'tickets_app:update-ticket' ticket.pk %}">Modifier</a>
+            <a href="{% url 'tickets_app:delete-ticket' ticket.pk %}">Supprimer</a>
+        </div>
+        {% endfor %}
+    </div>
+
+
 </div>
 
-<div class="tickets">
-    {% for ticket in tickets %}
-    <p>Vous avez publié un ticket</p>
-    <p>{{ ticket.headline }}</p>
-    <img src="" alt="star rating" class="rating {{ review.rating }}">
-    <p>{{ ticket.time_created|date:'H:i, j F o' }}</p>
-    <div class="ticket">
-        <p>Ticket - {{ ticket.user }}</p>
-        <p>{{ ticket.title }}</p>
-        <p>{{ ticket.description }}</p>
-        <img src="../media/{{ ticket.image }}" alt="Image: {{ ticket.title|truncatewords:3 }}" class="book-img">
-    </div>
-    <a href="{% url 'tickets_app:update-ticket' ticket.pk %}">Modifier</a>
-    <a href="{% url 'tickets_app:delete-ticket' ticket.pk %}">Supprimer</a>
-    {% endfor %}
-</div>
+
 {% endblock %}
