@@ -18,7 +18,7 @@ Vos Posts
     <img src="" alt="star rating" class="rating {{ review.rating }}">
     <div class="ticket">
         {% if review.ticket.user == request.user %}
-        <p>Ticket - Vous</p>
+        <p>Critique - Vous</p>
         {% else %}
         <p>Ticket - {{ review.ticket.user }}</p>
         {% endif %}

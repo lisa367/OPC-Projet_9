@@ -11,13 +11,13 @@ Créer une critique
     <p>Vous êtes en train de poster en réponse à votre propre ticket</p>
     {% else %}
     <p>Vous êtes en train de poster en réponse à </p>
+    {% endif %}
     <div id="ticket-data">
         <p>{{ ticket.user }} a demandé une critique <span>{{ ticket.time_created|date:"H:i, j F o" }}</span></p>
         <p>{{ ticket.title }}</p>
         <p>{{ ticket.description }}</p>
         <img src="../../media/{{ticket.image}}" alt="{{ ticket.title }}" class="book-img">
     </div>
-    {% endif %}
 </div>
 
 

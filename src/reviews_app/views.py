@@ -80,7 +80,7 @@ def create_review(request, ticket_id):
 def create_review_and_ticket(request):
     context = {}
     if request.method == "POST":
-        form_ticket = TicketForm(request.POST)
+        form_ticket = TicketForm(request.POST, request.FILES)
         form_review = ReviewForm(request.POST)
         print(form_ticket.is_valid(), form_review.is_valid())
 
