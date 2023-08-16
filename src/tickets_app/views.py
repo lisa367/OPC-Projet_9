@@ -19,24 +19,23 @@ class UpdateTicketView(UpdateView):
     model = Ticket
     form_class = TicketForm
     # fields = "__all__"
-    success_url = reverse_lazy("homepage")
+    success_url = reverse_lazy("posts")
 
 
 class DeleteTicketView(DeleteView):
     template_name = "tickets_app/delete_ticket.html"
     model = Ticket
-    success_url = reverse_lazy("homepage")
+    success_url = reverse_lazy("posts")
 
 
 def create_ticket(request):
     context = {}
     if request.method == "POST":
-        form = TicketForm(request.POST)
+        form = TicketForm(request.POST, request.FILES)
         if form.is_valid():
             new_ticket = form.save(commit=False)
             new_ticket.user = request.user
             new_ticket.save()
-            print(new_ticket)
         return redirect("homepage")
 
     form = TicketForm()

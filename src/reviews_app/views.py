@@ -45,7 +45,7 @@ class UpdateReviewView(UpdateView):
     template_name = "reviews_app/update_review.html"
     model = Review
     form_class = ReviewForm
-    success_url = reverse_lazy("homepage")
+    success_url = reverse_lazy("posts")
     # fields = "__all__"
     # exclude = ["time_created"]
 
@@ -53,7 +53,7 @@ class UpdateReviewView(UpdateView):
 class DeleteReviewView(DeleteView):
     template_name = "reviews_app/delete_review.html"
     model = Review
-    success_url = reverse_lazy("homepage")
+    success_url = reverse_lazy("posts")
     # fields = "__all__
 
 
@@ -85,10 +85,6 @@ def create_review_and_ticket(request):
         print(form_ticket.is_valid(), form_review.is_valid())
 
         if form_ticket.is_valid():
-            # user_id = User.objects.get(username=request.user).pk
-            # form_ticket.cleaned_data["user"] = user_id
-            # print("ticket : ", form_ticket.cleaned_data)
-            # print(form_ticket["user"])
             ticket = form_ticket.save(commit=False)
             ticket.user = request.user
             ticket.save()
@@ -96,10 +92,6 @@ def create_review_and_ticket(request):
             last_ticket = Ticket.objects.last()
 
         if form_review.is_valid():
-            """form_review.cleaned_data["user"] = last_ticket.user
-            form_review.cleaned_data["ticket"] = last_ticket.pk
-            form_review.save()
-            print("review : ", form_review.cleaned_data)"""
             review = form_review.save(commit=False)
             review.user = request.user
             review.ticket = last_ticket

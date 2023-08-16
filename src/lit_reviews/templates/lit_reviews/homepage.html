@@ -44,7 +44,7 @@
             <p>{{ ticket.title }}</p>
             <p>{{ ticket.description }}</p>
             <p>{{ ticket.time_created|date:"H:i, j F o" }}</p>
-            <img src="../media/{{ticket.image}}" alt="{{ ticket.title }}" class="book-img">
+            <img src="../media/{{ticket.image}}" alt="{{ ticket.title|truncatewords:3}}" class="book-img">
             <!-- <a href="{% url 'tickets_app:update-ticket' pk=ticket.pk %}">Modifier</a>
             <a href="{% url 'tickets_app:delete-ticket' pk=ticket.pk %}">Supprimer</a> -->
             <button>

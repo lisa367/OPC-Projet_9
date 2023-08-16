@@ -33,7 +33,7 @@ from .views import (
 
 urlpatterns = [
     path("", index, name="index"),
-    path("signup", signup, name="signup"),
+    path("signup/", signup, name="signup"),
     path("home/", homepage, name="homepage"),
     path("subscriptions/", subscriptions, name="subscriptions"),
     path("new-subcription/", follow_new_user, name="new-subscription"),

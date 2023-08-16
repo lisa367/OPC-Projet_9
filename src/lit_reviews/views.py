@@ -43,7 +43,7 @@ def signup(request, *args, **kwargs):
         if form.is_valid():
             print("valid form")
             form.save()
-            return redirect("homepage")
+            return redirect("index")
 
         else:
             print("invalid form")
@@ -77,8 +77,8 @@ def homepage(request, *args, **kwargs):
     context["reviews"] = reviews_users_all
     context["tickets"] = tickets_users_all
 
-    if kwargs.get("message"):
-        messages.info(request, message=kwargs.get("message"))
+    """ if kwargs.get("message"):
+        messages.info(request, message=kwargs.get("message")) """
 
     return render(request, "lit_reviews/homepage.html", context=context)
 
@@ -125,7 +125,9 @@ def subscriptions(request):
             return redirect("subscriptions")
 
         else:
-            return redirect("homepage",)
+            return redirect(
+                "homepage",
+            )
     else:
         # form = NewSubscriptionForm()
         user = User.objects.get(username=request.user.username)

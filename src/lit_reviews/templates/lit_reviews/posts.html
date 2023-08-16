@@ -40,7 +40,7 @@ Vos Posts
         <p>Ticket - {{ ticket.user }}</p>
         <p>{{ ticket.title }}</p>
         <p>{{ ticket.description }}</p>
-        <img src="../media/{{ ticket.image }}" alt="" class="book-img">
+        <img src="../media/{{ ticket.image }}" alt="Image: {{ ticket.title|truncatewords:3 }}" class="book-img">
     </div>
     <a href="{% url 'tickets_app:update-ticket' ticket.pk %}">Modifier</a>
     <a href="{% url 'tickets_app:delete-ticket' ticket.pk %}">Supprimer</a>
