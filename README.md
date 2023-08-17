@@ -23,17 +23,13 @@ Votre répertoire local devrait désormais avoir la structure suivante :
         | .env/
         | src/
                 | lit_reviews/
-                        | base.py
-                        | modele.py
+
                 | reviews_app/
-                        | base.py
-                        | vue.py               
+           
                 | tickets_app/
-                        | base.py
-                        | controleur.py
+
                 | static/
-                        | css/
-                            | style.css
+
                 | media/
         | .gitignore
         | README.md
