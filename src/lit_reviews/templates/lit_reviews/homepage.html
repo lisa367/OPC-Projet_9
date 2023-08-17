@@ -25,9 +25,6 @@
                 <p>ticket - {{ review.ticket.user }}</p>
                 <p>{{ review.ticket.title }}</p>
                 <img src="../media/{{ review.ticket.image }}" alt="{{ review.ticket.title }}" class="book-img">
-                <button>
-                    <a href="{% url 'reviews_app:create-review' ticket_id=review.ticket.pk %}">Créer une critique</a>
-                </button>
             </div>
         </div>
         {% endfor %}
