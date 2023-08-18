@@ -1,15 +1,24 @@
 {% extends 'lit_reviews/base.html' %}
 
 {% block h2 %}
-Créer un ticket
+<div class="page-content">
+    Créer un ticket
+</div>
+
 {% endblock %}
 
 {% block content %}
 
-<form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Envoyer">
-</form>
+<div class="page-content">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-ticket">
+            {{ form.as_table }}
+        </div>
+        <input type="submit" value="Envoyer">
+    </form>
+</div>
+
+
 
 {% endblock %}

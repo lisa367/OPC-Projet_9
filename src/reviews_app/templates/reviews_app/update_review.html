@@ -1,15 +1,25 @@
 {% extends 'lit_reviews/base.html' %}
 
 {% block h2 %}
-Modifier votre critique
+
+<div class="page-content">
+    Modifier votre critique
+</div>
+
 {% endblock %}
 
 {% block content %}
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Envoyer">
-</form>
+<div class="page-content">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-review">
+            {{ form.as_table }}
+        </div>
+        <input type="submit" value="Envoyer">
+    </form>
+</div>
+
+
 
 {% endblock %}
