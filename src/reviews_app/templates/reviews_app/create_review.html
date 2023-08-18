@@ -10,13 +10,13 @@
 
 {% block content %}
 <div class="page-content">
+    {% if request.user == ticket.user %}
+    <p>Vous êtes en train de poster en réponse à votre propre ticket</p>
+    {% else %}
+    <p>Vous êtes en train de poster en réponse à </p>
+    {% endif %}
 
     <div class="original-ticket">
-        {% if request.user == ticket.user %}
-        <p>Vous êtes en train de poster en réponse à votre propre ticket</p>
-        {% else %}
-        <p>Vous êtes en train de poster en réponse à </p>
-        {% endif %}
         <div id="ticket-data">
             <p>{{ ticket.user }} a demandé une critique <span>{{ ticket.time_created|date:"H:i, j F o" }}</span></p>
             <p>{{ ticket.title }}</p>
