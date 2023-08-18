@@ -16,10 +16,9 @@ def index(request, *args, **kwargs):
         print(request.POST)
         username = request.POST.get("username")
         password = request.POST.get("password")
-        # if form.is_valid :
         user = authenticate(request, username=username, password=password)
         print(user)
-        # if form.is_valid :
+
         if user:
             print("valid form")
             login(request, user)
