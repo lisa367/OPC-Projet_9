@@ -10,11 +10,11 @@ from tickets_app.models import Ticket
 class Review(m.Model):
     # ticket = m.CharField(max_length=128)
     ticket = m.ForeignKey(to=Ticket, on_delete=m.CASCADE)
+    headline = m.CharField(max_length=128)
     rating = m.PositiveSmallIntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(5)]
     )
     user = m.ForeignKey(to=User, on_delete=m.CASCADE)
-    headline = m.CharField(max_length=128)
     body = m.TextField(max_length=8192)
     time_created = m.DateTimeField(auto_now_add=True)
 

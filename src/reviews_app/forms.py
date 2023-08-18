@@ -5,6 +5,7 @@ from .models import Review
 
 class ReviewForm(forms.ModelForm):
     CHOICES = [
+        (0, 0),
         (1, 1),
         (2, 2),
         (3, 3),
